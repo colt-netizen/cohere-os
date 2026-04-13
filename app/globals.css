@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-base: #08090a;
+  --color-panel: #0f1011;
+  --color-surface: #191a1b;
+  --color-surface-hover: #28282c;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+  --color-border-solid: #23252a;
+  --color-accent: #5e6ad2;
+  --color-accent-bright: #7170ff;
+  --color-accent-hover: #828fff;
+  --color-text-primary: #f7f8f8;
+  --color-text-secondary: #d0d6e0;
+  --color-text-tertiary: #8a8f98;
+  --color-text-quaternary: #62666d;
+  --color-green: #27a644;
+  --color-emerald: #10b981;
+  --color-red: #ef4444;
+  --color-amber: #f59e0b;
+  --color-blue: #3b82f6;
+  --color-purple: #a855f7;
+  --font-sans: 'Inter', 'SF Pro Display', -apple-system, system-ui, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: 'Berkeley Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: 'Inter';
+  src: url('https://rsms.me/inter/font-files/InterVariable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  font-feature-settings: "cv01", "ss03";
+}
+
+* {
+  box-sizing: border-box;
+  font-feature-settings: "cv01", "ss03";
+}
+
+html {
+  background: var(--color-base);
+  color: var(--color-text-primary);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  background: var(--color-base);
+  min-height: 100vh;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Markdown rendering */
+.prose h1 { font-size: 1.5rem; font-weight: 590; margin-bottom: 0.75rem; color: var(--color-text-primary); letter-spacing: -0.704px; }
+.prose h2 { font-size: 1.25rem; font-weight: 510; margin-top: 1.5rem; margin-bottom: 0.5rem; color: var(--color-text-primary); letter-spacing: -0.288px; }
+.prose h3 { font-size: 1.1rem; font-weight: 590; margin-top: 1rem; margin-bottom: 0.5rem; color: var(--color-text-primary); letter-spacing: -0.24px; }
+.prose p { margin-bottom: 0.75rem; color: var(--color-text-secondary); line-height: 1.6; font-weight: 400; }
+.prose ul, .prose ol { margin-bottom: 0.75rem; padding-left: 1.5rem; color: var(--color-text-secondary); }
+.prose li { margin-bottom: 0.25rem; line-height: 1.5; }
+.prose strong { color: var(--color-text-primary); font-weight: 590; }
+.prose em { color: var(--color-text-secondary); }
+.prose code { font-family: var(--font-mono); font-size: 0.85em; background: rgba(255, 255, 255, 0.05); padding: 0.15em 0.4em; border-radius: 4px; color: var(--color-accent-bright); }
+.prose pre { background: var(--color-panel); padding: 1rem; border-radius: 8px; overflow-x: auto; margin-bottom: 1rem; border: 1px solid rgba(255, 255, 255, 0.08); }
+.prose pre code { background: none; padding: 0; color: var(--color-text-secondary); }
+.prose a { color: var(--color-accent-bright); text-decoration: underline; text-underline-offset: 2px; }
+.prose hr { border-color: var(--color-border-solid); margin: 1.5rem 0; }
+.prose blockquote { border-left: 2px solid var(--color-accent); padding-left: 1rem; color: var(--color-text-tertiary); margin-bottom: 0.75rem; }
+.prose table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; font-size: 0.9rem; }
+.prose th { text-align: left; padding: 0.5rem; border-bottom: 1px solid var(--color-border-solid); color: var(--color-text-tertiary); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 510; }
+.prose td { padding: 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: var(--color-text-secondary); }
+.prose del { color: var(--color-text-quaternary); }
